@@ -1,0 +1,26 @@
+---
+spring:
+  application:
+    name: eureka-registry-server
+  profiles: peer1
+server:
+  port: 8001
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    serviceUrl:
+      defaultZone: http://peer2:8002/eureka/
+---
+spring:
+  application:
+    name: eureka-registry-server
+  profiles: peer2
+server:
+  port: 8002
+eureka:
+  instance:
+    hostname: peer2
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:8001/eureka/
